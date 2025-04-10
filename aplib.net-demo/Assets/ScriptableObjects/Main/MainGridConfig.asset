@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseSeed: 0
   Seed: 0
-  GridWidthX: 10
-  GridWidthZ: 10
-  AmountOfRooms: 5
+  GridWidthX: 4
+  GridWidthZ: 4
+  AmountOfRooms: 2

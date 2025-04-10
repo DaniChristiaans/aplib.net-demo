@@ -202,10 +202,10 @@ namespace LevelGeneration
             // Calculate where the door should be placed
             Vector3 relativeDoorPosition = direction switch
             {
-                North => new Vector3(0, 0, doorDistanceFromRoomCenter),
-                East => new Vector3(doorDistanceFromRoomCenter, 0, 0),
-                South => new Vector3(0, 0, -doorDistanceFromRoomCenter),
-                West => new Vector3(-doorDistanceFromRoomCenter, 0, 0),
+                North => new Vector3(0, 3, doorDistanceFromRoomCenter),
+                East => new Vector3(doorDistanceFromRoomCenter, 3, 0),
+                South => new Vector3(0, 3, -doorDistanceFromRoomCenter),
+                West => new Vector3(-doorDistanceFromRoomCenter, 3, 0),
                 _ => throw new UnityException("Invalid direction when placing door")
             };
 
