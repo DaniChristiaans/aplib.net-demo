@@ -9,28 +9,33 @@ public class PlatformRandomizer : MonoBehaviour
 
     [SerializeField]
     private Transform[] _platforms;
-
-
+    private Vector3[] _origins;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        _platforms = GetComponentsInChildren<Transform>();
+        _origins = new Vector3[_platforms.Length];
+
+        for (int i = 0; i < _platforms.Length; i++)
+        {
+            _origins[i] = _platforms[i].position;
+        }
     }
 
     void OnEnable()
     {
-        _platforms = GetComponentsInChildren<Transform>();
 
-        foreach (Transform t in _platforms)
-        {
-            t.localPosition += RandomOffsetVector3(_maxOffsetMagnitudes);
-        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Randomize()
     {
         
+
+        for(int i = 0; i < _platforms.Length; i++)
+        {
+            _platforms[i].position = _origins[i] + RandomOffsetVector3(_maxOffsetMagnitudes);
+        }
     }
 
     Vector3 RandomOffsetVector3(Vector3 maxMagnitudes)
@@ -40,7 +45,6 @@ public class PlatformRandomizer : MonoBehaviour
         float z = RandomOffsetFloat(maxMagnitudes.z);
         return new Vector3(x, y, z);
     }
-
 
     float RandomOffsetFloat(float maxMagnitude)
     {

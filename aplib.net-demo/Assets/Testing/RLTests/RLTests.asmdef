@@ -8,7 +8,9 @@
         "Unity.InputSystem",
         "Unity.InputSystem.TestFramework",
         "Cinemachine",
-        "team-zomsa.aplib-unity"
+        "team-zomsa.aplib-unity",
+        "Unity.ML-Agents",
+        "MLAgents4Aplib"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

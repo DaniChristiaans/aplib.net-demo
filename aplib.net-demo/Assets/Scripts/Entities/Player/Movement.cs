@@ -2,6 +2,7 @@
 // University within the Software Project course.
 // Copyright Utrecht University (Department of Information and Computing Sciences)
 
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 /// <summary>
@@ -261,4 +262,12 @@ public class Movement : MonoBehaviour
     /// Set the jumpPressed flag to false when the player lets go of the jump button.
     /// </summary>
     public void OnStoppedJump() => _jumpPressed = false;
+
+    /// <summary>
+    /// Getter for isGrounded
+    /// </summary>
+    public bool IsGrounded()
+    {
+        return _isGrounded;
+    }
 }

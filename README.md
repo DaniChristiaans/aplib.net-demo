@@ -1,3 +1,34 @@
+# Aplib.Net Demo Game (Fork)
+
+> **This repository is a fork of [team-zomsa/aplib.net-demo](https://github.com/team-zomsa/aplib.net-demo).**
+> 
+> I forked this project to extend it with Unity ML-Agents for Reinforcement Learning experiments, as part of a thesis project.
+
+Modifications include:
+- Integration of ML-Agents package.
+- Creation of training environments for RL experiments.
+- Python training scripts located in `/RL_Training`.
+
+For instructions on training the ML agent, see the [RL Training README](RL_Training/README.md)
+
+## License
+This project is licensed under the terms of the GNU Affero General Public License v3.0 (AGPL-3.0).
+It is a fork of the [team-zomsa/aplib.net-demo](https://github.com/team-zomsa/aplib.net-demo) project, which is also licensed under AGPL-3.0.
+The original LICENSE file has been preserved.
+
+All modifications and additions in this fork, including the RL training scripts and the code integrating ML-Agents into the project, are licensed under the AGPL-3.0.
+
+See [agpl-3.0.txt](./agpl-3.0.txt) for the full license text.
+
+### Third-Party Licenses
+This project uses the Unity ML-Agents Toolkit, which is licensed under the [Apache License 2.0](https://github.com/Unity-Technologies/ml-agents/blob/main/LICENSE.md).
+
+
+
+The original README is included below for reference.
+
+---
+
 # Aplib.Net Demo Game
 [![GitHub Release](https://img.shields.io/github/v/release/team-zomsa/aplib.net-demo?label=GitHub%20Release)
 ](https://github.com/team-zomsa/aplib.net-demo/releases)

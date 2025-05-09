@@ -17,6 +17,11 @@ aplib.net-demo/[Mm]emoryCaptures/
 # Recordings can get excessive in size
 aplib.net-demo/[Rr]ecordings/
 
+# ML Agents results can also get excessive in size
+aplib.net-demo/[Rr]esults/
+[Rr]esults/
+aplib.net-demo/[Aa]ssets/ML-Agents/Timers
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 

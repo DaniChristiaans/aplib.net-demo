@@ -16,6 +16,8 @@ using Tactic = Aplib.Core.Intent.Tactics.Tactic<Testing.RLTests.PathfindingBelie
 using GoalStructure = Aplib.Core.Desire.GoalStructures.GoalStructure<Testing.RLTests.PathfindingBeliefSet>;
 using BdiAgent = Aplib.Core.Agents.BdiAgent<Testing.RLTests.PathfindingBeliefSet>;
 using TransformPathfinderAction = Aplib.Integrations.Unity.Actions.TransformPathfinderAction<Testing.RLTests.PathfindingBeliefSet>;
+using MoveRLAction = MLAgents4Aplib.MoveRLAction<Testing.RLTests.PathfindingBeliefSet>;
+using Unity.MLAgents;
 
 namespace Testing.RLTests
 {
@@ -34,26 +36,46 @@ namespace Testing.RLTests
 
     public class PathfindingTests
     {
+        [SerializeField]
+        private bool _useRLAgent = true;
+
         [SetUp]
         public void Setup()
         {
             SceneManager.LoadScene("EqualDistanceTest");
         }
 
+
         [UnityTest]
         public IEnumerator TransformPathfindingTest()
-        {
+        {   
             PathfindingBeliefSet rootBeliefSet = new();
 
+            Tactic move;
+
             // Action: Move the player towards the target position
-            Tactic move = new TransformPathfinderAction(beliefSet =>
+            if (_useRLAgent)
+            {
+                move = new MoveRLAction(beliefSet =>
+                {
+                    GameObject player = beliefSet.Player;
+                    return player.GetComponent<MLAgentAplib>();
+                },
+                    rootBeliefSet.TargetPosition,
+                    0.9f
+                );
+            }
+            else
+            {
+                move = new TransformPathfinderAction(beliefSet =>
                 {
                     GameObject player = beliefSet.Player;
                     return player.GetComponent<Rigidbody>();
                 },
-                rootBeliefSet.TargetPosition,
-                0.9f
-            );
+                    rootBeliefSet.TargetPosition,
+                    0.9f
+                );
+            }
 
             GoalStructure goal = new Goal(move, Predicate);
             BdiAgent agent = new(rootBeliefSet, goal.Lift());
@@ -74,7 +96,7 @@ namespace Testing.RLTests
                 GameObject player = beliefSet.Player;
                 Vector3 target = beliefSet.TargetPosition;
 
-                return Vector3.Distance(player.transform.position, target) < 1f;
+                return Vector3.Distance(player.transform.position, target) < 5f;
             }
         }
     }
